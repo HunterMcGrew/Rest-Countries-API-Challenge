@@ -4,6 +4,7 @@ import { useState } from 'react';
 import useLocalStorage from 'use-local-storage';
 // components
 import Header from "./components/header/Header";
+import Search from "./components/search/Search";
 
 function App() {
 
@@ -16,10 +17,13 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App" data-theme={theme}>
       <Header
         theme={theme}
         switchTheme={switchTheme}
+      />
+      <Search
+        theme={theme}
       />
     </div>
   );

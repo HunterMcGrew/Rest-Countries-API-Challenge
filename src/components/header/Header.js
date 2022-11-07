@@ -5,9 +5,9 @@ function Header(props) {
 
     let mode;
     if (props.theme === "dark") {
-        mode = "Dark Mode";
-    } else {
         mode = "Light Mode";
+    } else {
+        mode = "Dark Mode";
     };
     return (
 
@@ -26,7 +26,7 @@ function Header(props) {
                         <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
                         </svg>
                         {/* Light Mode || Dark Mode */}
-                        {mode}
+                        <span className="header-right">{mode}</span>
                     </p>
                 </div>
             </section>

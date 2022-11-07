@@ -9,3 +9,59 @@
     /* dark mode text & light mode elements */
     --white: hsl(0, 0%, 100%);
 }
+
+.search-container {
+    /* change this later to match */
+    margin: 0 5% 0 5%;
+}
+
+.input-group-text {
+    background-color: var(--white);
+    border: 0;
+    height: 50px;
+}
+
+.form-control {
+    border: 0;
+    height: 40px;
+    width: 100%;
+}
+
+.form-control::placeholder {
+    color: var(--lightInput);
+    opacity: 1;
+}
+
+.form-control:focus {
+    box-shadow: none !important;
+}
+
+.icon-tabler {
+    margin: 0;
+    padding: 0;
+}
+
+/* dark mode */
+
+.search-container[data-theme="dark"] {
+    background-color: var(--darkElements);
+}
+
+.input-group-text[data-theme="dark"] {
+    background-color: var(--darkElements);
+}
+
+.form-control[data-theme="dark"] {
+    background-color: var(--darkElements);
+    color: var(--white);
+}
+
+.form-control[data-theme="dark"]::placeholder {
+    color: var(--white);
+    opacity: .8;
+}
+
+.icon-tabler[data-theme="dark"] {
+    stroke: var(--white);
+    fill: var(--darkElements);
+}

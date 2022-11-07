@@ -22,8 +22,8 @@ header {
     color: var(--lightText);
 }
 
-.icon-tabler {
-    margin-right: 8px;
+.header-right {
+    margin-left: 8px;
 }
 
 .theme-switcher-text {

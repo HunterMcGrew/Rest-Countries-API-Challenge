@@ -23,7 +23,7 @@ header {
 
 .header-text {
     font-size: 16px;
-    font-weight: 800;
+    font-weight: 600;
     margin: 0 0 0 20px;
     color: var(--lightText);
 }
@@ -33,7 +33,7 @@ header {
 }
 
 .theme-switcher-text {
-    font-weight: 600;
+    font-weight: 300;
     font-size: 14px;
     margin: 0 20px 0 0;
     color: var(--lightText);

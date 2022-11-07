@@ -13,10 +13,11 @@
 .search-container {
     /* change this later to match */
     margin: 0 5% 0 5%;
+    background-color: var(--lightBg);
 }
 
 .input-group-text {
-    background-color: var(--white);
+    background-color: var(--lightBg);
     border: 0;
     height: 50px;
 }
@@ -25,6 +26,7 @@
     border: 0;
     height: 40px;
     width: 100%;
+    background-color: var(--lightBg);
 }
 
 .form-control::placeholder {
@@ -34,6 +36,7 @@
 
 .form-control:focus {
     box-shadow: none !important;
+    background-color: var(--lightBg);
 }
 
 .icon-tabler {
@@ -61,7 +64,7 @@
     opacity: .8;
 }
 
-.icon-tabler[data-theme="dark"] {
+.icon-tabler-search[data-theme="dark"] {
     stroke: var(--white);
     fill: var(--darkElements);
 }

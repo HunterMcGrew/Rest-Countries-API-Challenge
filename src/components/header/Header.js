@@ -2,7 +2,7 @@ import React from "react";
 import "./Header.css";
 
 function Header(props) {
-
+console.log("header props", props);
     let mode;
     if (props.theme === "dark") {
         mode = "Light Mode";

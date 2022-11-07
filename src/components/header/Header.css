@@ -51,8 +51,9 @@ header[data-theme="dark"] {
     color: var(--white);
 }
 
-.icon-tabler[data-theme="dark"] {
+.icon-tabler-moon[data-theme="dark"] {
     fill: var(--white);
+    stroke: var(--white);
 }
 
 /* Needs media query for larger screens */

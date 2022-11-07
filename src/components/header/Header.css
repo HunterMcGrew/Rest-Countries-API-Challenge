@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
+:root {
+    /* dark mode */
+    --darkElements: hsl(209, 23%, 22%);
+    --darkBg: hsl(207, 26%, 17%);
+    /* light mode */
+    --lightText: hsl(200, 15%, 8%);
+    --lightInput: hsl(0, 0%, 52%);
+    --lightBg:  hsl(0, 0%, 98%);
+    /* dark mode text & light mode elements */
+    --white: hsl(0, 0%, 100%);
+}
+
+* {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+header {
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.header-text {
+    font-size: 16px;
+    font-weight: 800;
+    margin: 0 0 0 20px;
+    color: var(--lightText);
+}
+
+.icon-tabler {
+    margin-right: 8px;
+}
+
+.theme-switcher-text {
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0 20px 0 0;
+    color: var(--lightText);
+}
+
+/* dark theme */
+
+header[data-theme="dark"] {
+    background-color: var(--darkBg);
+}
+
+.header-text[data-theme="dark"] {
+    color: var(--white);
+}
+
+.theme-switcher[data-theme="dark"] {
+    color: var(--white);
+}
+
+.theme-switcher-text[data-theme="dark"] {
+    color: var(--white);
+}
+
+.icon-tabler[data-theme="dark"] {
+    fill: var(--white);
+}
+
+/* Needs media query for larger screens */

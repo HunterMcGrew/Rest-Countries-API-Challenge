@@ -3,8 +3,8 @@ import './App.css';
 import { useState } from 'react';
 import useLocalStorage from 'use-local-storage';
 // components
-import Header from "./components/header/Header";
-import Search from "./components/search/Search";
+import Header from "../header/Header";
+import Search from "../search/Search";
 
 function App() {
 

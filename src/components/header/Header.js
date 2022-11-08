@@ -2,7 +2,7 @@ import React from "react";
 import "./Header.css";
 
 function Header(props) {
-console.log("header props", props);
+
     let mode;
     if (props.theme === "dark") {
         mode = "Light Mode";
@@ -11,7 +11,7 @@ console.log("header props", props);
     };
     return (
 
-        <header className="row shadow-sm" data-theme={props.theme}>
+        <header className="row shadow-sm header-container" data-theme={props.theme}>
             <section className="header col-7 d-flex align-items-center" data-theme={props.theme}>
                 <p className="header-text" data-theme={props.theme}>
                     Where in the world?

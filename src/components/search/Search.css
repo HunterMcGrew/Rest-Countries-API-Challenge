@@ -10,7 +10,7 @@
     --white: hsl(0, 0%, 100%);
 }
 
-.search-container {
+.input-container {
     /* change this later to match */
     margin: 0 5% 0 5%;
     background-color: var(--lightBg);
@@ -46,7 +46,7 @@
 
 /* dark mode */
 
-.search-container[data-theme="dark"] {
+.input-container[data-theme="dark"] {
     background-color: var(--darkElements);
 }
 

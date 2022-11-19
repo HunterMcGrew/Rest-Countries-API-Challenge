@@ -12,15 +12,15 @@
 
 .header-container {
     height: 80px;
-    margin: 0 0 20px 0;
     width: 100vw;
 }
 
 .header-text {
     font-size: 16px;
     font-weight: 600;
-    margin: 0 0 0 20px;
     color: var(--lightText);
+    margin: 0 0 0 32px;
+    padding: 10px 0;
 }
 
 .header-right {
@@ -30,8 +30,13 @@
 .theme-switcher-text {
     font-weight: 300;
     font-size: 14px;
-    margin: 0 20px 0 0;
+    margin: 0 48px 0 0;
     color: var(--lightText);
+    padding: 10px 0;
+}
+
+.theme-switcher-text:hover {
+    cursor: pointer;
 }
 
 /* dark theme */

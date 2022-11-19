@@ -5,7 +5,7 @@ function Search(props) {
     
     return(
 
-        <section className="search-container">
+        <section className="search-container d-flex justify-content-center">
             <section className="input-container row shadow-sm align-items-center rounded-1" data-theme={props.theme}>
                 <div className="input-group d-flex align-items-center">
                     <span className="input-group-text" id="basic-addon1" data-theme={props.theme}>

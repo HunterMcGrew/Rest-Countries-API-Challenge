@@ -5,6 +5,7 @@ import useLocalStorage from 'use-local-storage';
 // components
 import Header from "../header/Header";
 import Search from "../search/Search";
+import Results from '../results/Results';
 
 function App() {
 
@@ -37,14 +38,20 @@ function App() {
   if (savedApi && !apiAll) setApiAll(savedApi);
 
   return (
-    <div className="App" data-theme={theme}>
-      <Header
-        theme={theme}
-        switchTheme={switchTheme}
-      />
-      <Search
-        theme={theme}
-      />
+    <div className="App-container" data-theme={theme}>
+      <section className="App" data-theme={theme}>
+        <Header
+          theme={theme}
+          switchTheme={switchTheme}
+        />
+        <Search
+          theme={theme}
+        />
+        <Results
+          theme={theme}
+          apiAll={apiAll}
+        />
+      </section>
     </div>
   );
 }

@@ -16,19 +16,19 @@
     font-family: 'Nunito Sans', sans-serif;
 }
 
-.App-container{
+.App{
     background-color: var(--lightBg);
     height: 100vh;
 }
 
-.App-container[data-theme="dark"] {
+.App[data-theme="dark"] {
     background-color: var(--darkBg);
 }
 
-.App {
+.body-container {
     /* background-color: var(--lightBg); */
     /* height: 100vh; */
-    margin: 0 20px 0 20px;
+    margin: 40px 20px 0 20px;
 }
 
 /* .App[data-theme="dark"] {

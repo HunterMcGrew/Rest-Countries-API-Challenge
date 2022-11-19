@@ -10,10 +10,14 @@
     --white: hsl(0, 0%, 100%);
 }
 
+.search-container {
+    margin-bottom: 40px;
+}
+
 .input-container {
     /* change this later to match */
     /* margin: 0 5% 0 5%; */
-    width: 95%;
+    width: 100%;
     background-color: var(--lightBg);
 }
 

@@ -38,12 +38,12 @@ function App() {
   if (savedApi && !apiAll) setApiAll(savedApi);
 
   return (
-    <div className="App-container" data-theme={theme}>
-      <section className="App" data-theme={theme}>
+    <section className="App" data-theme={theme}>
         <Header
           theme={theme}
           switchTheme={switchTheme}
         />
+      <section className="body-container" data-theme={theme}>
         <Search
           theme={theme}
         />
@@ -52,7 +52,7 @@ function App() {
           apiAll={apiAll}
         />
       </section>
-    </div>
+    </section>
   );
 }
 

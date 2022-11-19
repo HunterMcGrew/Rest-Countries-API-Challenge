@@ -11,7 +11,9 @@ function Results(props) {
                 <img
                 src={props.apiAll[0].flags.png}
                 />
-                {/* how do i get the SVG from data? */}
+                {/* how do i get the SVG from data?
+                    needs to be a fetch?
+                */}
             </div>
 
         </section>

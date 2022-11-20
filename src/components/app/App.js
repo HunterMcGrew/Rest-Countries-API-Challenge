@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import './App.css';
 import { useState } from 'react';
 import useLocalStorage from 'use-local-storage';
@@ -6,6 +6,8 @@ import useLocalStorage from 'use-local-storage';
 import Header from "../header/Header";
 import Search from "../search/Search";
 import Results from '../results/Results';
+import Loading from "../loading/Loading";
+
 
 function App() {
 
@@ -14,28 +16,29 @@ function App() {
   const [savedApi, setSavedApi] = useLocalStorage("apiCache", );
   const [apiAll, setApiAll] = useState();
 
-  console.log("apiAll", apiAll);
-  console.log("savedApi", savedApi);
-
+  
   const switchTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
   }
-
-  const fetchAll = async () => {
-    try {
-      let data = await fetch(`https://restcountries.com/v3.1/all`);
-      let response = await data.json();
-      // console.log("response", response);
-      setApiAll(response);
-      setSavedApi(response);
-    } catch (err) {
-      if (err) throw err;
-    }
-  }
-
-  if (!savedApi) fetchAll();
-  if (savedApi && !apiAll) setApiAll(savedApi);
+  
+  // const fetchAll = async () => {
+  //   try {
+  //     let data = await fetch(`https://restcountries.com/v3.1/all`);
+  //     let response = await data.json();
+  //     // console.log("response", response);
+  //     setApiAll(response);
+  //     setSavedApi(response);
+  //   } catch (err) {
+  //     if (err) throw err;
+  //   }
+  // }
+  
+  // if (!savedApi) fetchAll();
+  // if (savedApi && !apiAll) setApiAll(savedApi);
+  
+  console.log("apiAll", apiAll);
+  console.log("savedApi", savedApi);
 
   return (
     <section className="App" data-theme={theme}>
@@ -47,10 +50,14 @@ function App() {
         <Search
           theme={theme}
         />
+        <Suspense fallback={<Loading />}>
         <Results
           theme={theme}
           apiAll={apiAll}
+          savedApi={savedApi}
+
         />
+        </Suspense>
       </section>
     </section>
   );

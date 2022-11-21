@@ -49,6 +49,7 @@ function App() {
         />
         <Results
           theme={theme}
+          savedApi={savedApi}
           apiAll={apiAll}
         />
       </section>

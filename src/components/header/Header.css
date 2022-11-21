@@ -12,6 +12,7 @@
 
 .header-container {
     height: 80px;
+    background-color: var(--white);
 }
 
 .header-text {
@@ -40,8 +41,8 @@
 
 /* dark theme */
 
-header[data-theme="dark"] {
-    background-color: var(--darkBg);
+.header-container[data-theme="dark"] {
+    background-color: var(--darkElements);
 }
 
 .header-text[data-theme="dark"] {

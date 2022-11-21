@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import './App.css';
 import { useState } from 'react';
 import useLocalStorage from 'use-local-storage';
 // components
 import Header from "../header/Header";
 import Search from "../search/Search";
-import Results from '../results/Results';
+import Loading from "../loading/Loading";
+const Results = lazy(() => import("../results/Results.js"));
+
 
 function App() {
 
@@ -14,14 +16,12 @@ function App() {
   const [savedApi, setSavedApi] = useLocalStorage("apiCache", );
   const [apiAll, setApiAll] = useState();
 
-  console.log("apiAll", apiAll);
-  console.log("savedApi", savedApi);
-
+  
   const switchTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
   }
-
+  
   const fetchAll = async () => {
     try {
       let data = await fetch(`https://restcountries.com/v3.1/all`);
@@ -33,9 +33,14 @@ function App() {
       if (err) throw err;
     }
   }
-
+  
+  // Will probably need to come back to this logic and make sure
+  // it's what i want ******
   if (!savedApi) fetchAll();
   if (savedApi && !apiAll) setApiAll(savedApi);
+  
+  console.log("apiAll", apiAll); 
+  console.log("savedApi", savedApi);
 
   return (
     <section className="App" data-theme={theme}>
@@ -47,11 +52,13 @@ function App() {
         <Search
           theme={theme}
         />
-        <Results
-          theme={theme}
-          savedApi={savedApi}
-          apiAll={apiAll}
-        />
+        <Suspense fallback={<Loading />}>
+          <Results
+            theme={theme}
+            savedApi={savedApi}
+            apiAll={apiAll}
+          />
+        </Suspense>
       </section>
     </section>
   );

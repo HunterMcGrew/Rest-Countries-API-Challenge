@@ -1,8 +1,9 @@
 import React from "react";
 import "./results.css";
 
-function Results(props) {
-    console.log(props);
+const Results = (props) => {
+    console.log("props", props);
+
     return(
 
         <section className="results-container" data-theme={props.theme}>

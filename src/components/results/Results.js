@@ -8,16 +8,23 @@ const Results = (props) => {
 
         <section className="results-container" data-theme={props.theme}>
 
-            <div className="flag">
-                <img
-                src={props.apiAll[0].flags.png}
-                />
-                {/* how do i get the SVG from data?
-                    needs to be a fetch?
-                */}
-            </div>
+            {props.apiAll.map((item, i) => {
+
+                return(
+                    <div className="flag" key={i}>
+                    <img
+                    src={item.flags.png}
+                    />
+                    {/* how do i get the SVG from data?
+                        needs to be a fetch?
+                    */}
+                    </div>
+                )
+            })}
+            
 
         </section>
+
 
     )
 }

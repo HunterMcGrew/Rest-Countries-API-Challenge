@@ -16,9 +16,13 @@
     font-family: 'Nunito Sans', sans-serif;
 }
 
+html {
+    overscroll-behavior: contain;
+}
+
 .App{
     background-color: var(--lightBg);
-    height: 100vh;
+    contain: paint;
 }
 
 .App[data-theme="dark"] {

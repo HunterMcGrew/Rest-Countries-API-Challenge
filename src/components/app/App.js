@@ -39,7 +39,7 @@ function App() {
   if (!savedApi) fetchAll();
   if (savedApi && !apiAll) setApiAll(savedApi);
   
-  console.log("apiAll", apiAll);
+  console.log("apiAll", apiAll); 
   console.log("savedApi", savedApi);
 
   return (

@@ -6,14 +6,14 @@ const Results = (props) => {
 
     return(
 
-        <section className="results-container" data-theme={props.theme}>
+        <section className="results-container row flex-column justify-content-center align-items-center" data-theme={props.theme}>
 
             {props.apiAll.map((item, i) => {
 
                 return(
-                    <div className="flag" key={i}>
+                    <div className="flag col-12 " key={i}>
                     <img
-                    src={item.flags.png}
+                        src={item.flags.png}
                     />
                     {/* how do i get the SVG from data?
                         needs to be a fetch?

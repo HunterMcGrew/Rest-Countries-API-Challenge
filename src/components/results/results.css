@@ -10,3 +10,18 @@
     --white: hsl(0, 0%, 100%);
 }
 
+/* light mode */
+
+.flag {
+    margin: 0 0 40px 0;
+    padding: 0;
+    background-color: var(--white);
+    width: 320px;
+}
+
+
+/* dark mode */
+
+.flag[data-theme="dark"] {
+    background-color: var(--darkElements);
+}

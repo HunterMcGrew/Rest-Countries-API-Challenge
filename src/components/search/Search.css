@@ -41,7 +41,7 @@
 
 .form-control:focus {
     box-shadow: none !important;
-    background-color: var(--lightBg);
+    background-color: var(--white);
 }
 
 .icon-tabler {

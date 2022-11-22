@@ -15,6 +15,7 @@ function App() {
   const [theme, setTheme] = useLocalStorage("theme", defaultDark ? "dark" : "light");
   const [savedApi, setSavedApi] = useLocalStorage("apiCache", );
   const [apiAll, setApiAll] = useState();
+  const [regionFilter, setRegionFilter] = useState();
 
   
   const switchTheme = () => {
@@ -51,6 +52,7 @@ function App() {
       <section className="body-container" data-theme={theme}>
         <Search
           theme={theme}
+          setRegionFilter={setRegionFilter}
         />
         <Suspense fallback={<Loading />}>
           <Results

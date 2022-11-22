@@ -15,10 +15,13 @@
 }
 
 .input-container {
-    /* change this later to match */
-    /* margin: 0 5% 0 5%; */
     width: 100%;
     background-color: var(--white);
+    margin: 0;
+}
+
+.input-group {
+    width: 83.33%;
 }
 
 .input-group-text {
@@ -30,7 +33,7 @@
 .form-control {
     border: 0;
     height: 40px;
-    width: 100%;
+    /* width:  */
     background-color: var(--white);
 }
 
@@ -49,24 +52,57 @@
     padding: 0;
 }
 
+.filter-container-desktop {
+    display: none !important;
+    background-color: var(--white);
+    width: 150px;
+    padding-left: 0;
+    width: 16.66%
+}
+
+/* this container has set height so
+ul and li's hover over results container
+*/
 .filter-container {
     background-color: var(--white);
-    width: fit-content
+    width: 50%;
+    height: 50px;
+    margin-bottom: 40px;
 }
 
-.form-select {
-    width: 150px;
-    font-size: 14px;
-    background-color: var(--white);
-    border: none;
+.filter-text-container {
+    height: 100%;
+    width: 100%;
+    padding: 0 24px;
 }
 
-.form-select:focus {
-    border: none;
+.filter-text-container:hover {
+    cursor: pointer;
 }
 
 .expand-icon {
     color: var(--lightText);
+}
+
+.region-container-desktop {
+    display: none;
+}
+
+.region-container {
+    display: none;
+    background-color: var(--white);
+    margin-top: 5px;
+    position: relative;
+    z-index: 2;
+}
+
+.region-ul {
+    padding: 12px;
+}
+
+.region-selector {
+    list-style-type: none;
+    padding-left: 11px;
 }
 
 /* dark mode */
@@ -86,7 +122,7 @@
 
 .form-control[data-theme="dark"]::placeholder {
     color: var(--white);
-    opacity: .8;
+    opacity: 1;
 }
 
 .icon-tabler-search[data-theme="dark"] {
@@ -98,15 +134,19 @@
     background-color: var(--darkElements);
 }
 
-.form-select[data-theme="dark"] {
-    background-color: var(--darkElements);
-    color: var(--white)
+.icon-tabler-caret-down[data-theme="dark"] {
+    color: var(--white);
 }
 
-.icon-tabler-caret-down[data-theme="dark"] {
+.filter-text[data-theme="dark"] {
     color: var(--white);
 }
 
 .expand-icon[data-theme="dark"] {
     color: var(--white);
+}
+
+.region-container[data-theme="dark"] {
+    color: var(--white);
+    background-color: var(--darkElements);
 }

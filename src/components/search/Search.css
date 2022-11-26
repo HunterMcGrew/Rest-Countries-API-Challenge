@@ -80,8 +80,14 @@ ul and li's hover over results container
     cursor: pointer;
 }
 
+.filter-text {
+    font-size: 14px;
+    font-weight: 400;
+}
+
 .expand-icon {
     color: var(--lightText);
+    font-size: 18px !important;
 }
 
 .region-container-desktop {
@@ -102,7 +108,13 @@ ul and li's hover over results container
 
 .region-selector {
     list-style-type: none;
-    padding-left: 11px;
+    /* padding-left: 11px; */
+    padding: 5px 0 5px 11px;
+}
+
+.region-selector:hover {
+    background-color: var(--lightBg);
+    border-radius: 5px;
 }
 
 /* dark mode */
@@ -149,4 +161,8 @@ ul and li's hover over results container
 .region-container[data-theme="dark"] {
     color: var(--white);
     background-color: var(--darkElements);
+}
+
+.region-selector:hover[data-theme="dark"] {
+    background-color: var(--darkBg);
 }

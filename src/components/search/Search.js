@@ -10,11 +10,14 @@ function Search(props) {
 
     useEffect(() => {
         dropDownEl = dropDown.current;
-    }, [])
+    }, []);
 
-    const filterMenu = () => {
-        console.log("dropDown on Click", dropDown);
-        dropDownEl.style.display = "block";
+    const checkMenu = () => {
+        if (dropDownEl.style.display === "block") {
+            dropDownEl.style.display = "none";
+        } else {
+            dropDownEl.style.display = "block";
+        }
     }
 
     return(
@@ -69,7 +72,7 @@ function Search(props) {
 
             {/* mobile filter menu */}
             <section className="filter-container rounded-2 shadow-sm" data-theme={props.theme}>
-                <div className="filter-text-container d-flex align-items-center justify-content-between" onClick={filterMenu}>
+                <div className="filter-text-container d-flex align-items-center justify-content-between" onClick={checkMenu}>
                     <span className="filter-text" data-theme={props.theme}>
                         Filter by Region
                     </span>
@@ -80,11 +83,31 @@ function Search(props) {
                 </div>
                 <div className="region-container rounded-2 shadow-sm" data-theme={props.theme} ref={dropDown}>
                     <ul className="region-ul">
-                        <li className="region-selector" value="Africa">Africa</li>
-                        <li className="region-selector" value="America">America</li>
-                        <li className="region-selector" value="Asia">Asia</li>
-                        <li className="region-selector" value="Europe">Europe</li>
-                        <li className="region-selector" value="Oceania">Oceania</li>
+                        <li className="region-selector" 
+                            value="Africa"
+                            data-theme={props.theme}>
+                                Africa
+                        </li>
+                        <li className="region-selector" 
+                            value="America"
+                            data-theme={props.theme}>
+                                America
+                        </li>
+                        <li className="region-selector" 
+                            value="Asia"
+                            data-theme={props.theme}>
+                                Asia
+                        </li>
+                        <li className="region-selector" 
+                            value="Europe"
+                            data-theme={props.theme}>
+                                Europe
+                        </li>
+                        <li className="region-selector" 
+                            value="Oceania"
+                            data-theme={props.theme}>
+                                Oceania
+                        </li>
                     </ul>
                 </div>
             </section>

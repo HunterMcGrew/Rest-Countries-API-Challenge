@@ -6,6 +6,7 @@ import useLocalStorage from 'use-local-storage';
 import Header from "../header/Header";
 import Search from "../search/Search";
 import Loading from "../loading/Loading";
+const Homepage = lazy(() => import("../homepage/Homepage.js"));
 const Results = lazy(() => import("../results/Results.js"));
 
 
@@ -15,6 +16,7 @@ function App() {
   const [theme, setTheme] = useLocalStorage("theme", defaultDark ? "dark" : "light");
   const [savedApi, setSavedApi] = useLocalStorage("apiCache", );
   const [apiAll, setApiAll] = useState();
+  const [frontPage, setFrontPage] = useState();
   const [regionFilter, setRegionFilter] = useState();
 
   
@@ -30,11 +32,32 @@ function App() {
       // console.log("response", response);
       setApiAll(response);
       setSavedApi(response);
+      frontPageFilter(response);
     } catch (err) {
       if (err) throw err;
     }
   }
-  
+
+  const frontPageFilter = (response) => {
+    // filter through all countries to grab a few for the home page
+    let tempFrontPageArr = [];
+    response.forEach((item) => {
+      if (item.name.common === "Germany" || 
+          item.name.common === "United States of America" ||
+          item.name.common === "Brazil" ||
+          item.name.common === "Sweden" ||
+          item.name.common === "Ireland" ||
+          item.name.common === "Japan" ||
+          item.name.common === "China" ||
+          item.name.common === "Australia"
+          ) {
+        tempFrontPageArr.push(item);
+      }
+    }) 
+    console.log("tempArr", tempFrontPageArr);
+    return setFrontPage(tempFrontPageArr);
+  }
+
   // Will probably need to come back to this logic and make sure
   // it's what i want ******
   if (!savedApi) fetchAll();
@@ -42,6 +65,7 @@ function App() {
   
   console.log("apiAll", apiAll); 
   console.log("savedApi", savedApi);
+  console.log("frontpage", frontPage);
 
   return (
     <section className="App" data-theme={theme}>
@@ -55,12 +79,18 @@ function App() {
           setRegionFilter={setRegionFilter}
         />
         <Suspense fallback={<Loading />}>
+          <Homepage
+            theme={theme}
+            frontPage={frontPage}
+          />
+        </Suspense>
+        {/* <Suspense fallback={<Loading />}>
           <Results
             theme={theme}
             savedApi={savedApi}
             apiAll={apiAll}
           />
-        </Suspense>
+        </Suspense> */}
       </section>
     </section>
   );

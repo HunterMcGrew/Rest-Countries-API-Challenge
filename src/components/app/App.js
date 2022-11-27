@@ -19,6 +19,7 @@ function App() {
   const [frontPage, setFrontPage] = useState();
   const [regionFilter, setRegionFilter] = useState();
 
+  // how to keep state data thereeee
   
   const switchTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";

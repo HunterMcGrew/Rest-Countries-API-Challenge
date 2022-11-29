@@ -7,7 +7,7 @@ import Header from "../header/Header";
 import Search from "../search/Search";
 import Loading from "../loading/Loading";
 const Homepage = lazy(() => import("../homepage/Homepage.js"));
-const Results = lazy(() => import("../results/Results.js"));
+// const Results = lazy(() => import("../results/Results.js"));
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
   const [theme, setTheme] = useLocalStorage("theme", defaultDark ? "dark" : "light");
   const [savedApi, setSavedApi] = useLocalStorage("apiCache", );
   const [apiAll, setApiAll] = useState();
-  const [frontPage, setFrontPage] = useState();
+  const [frontPage, setFrontPage] = useLocalStorage("frontPage", );
   const [regionFilter, setRegionFilter] = useState();
 
   // how to keep state data thereeee
@@ -56,7 +56,7 @@ function App() {
       }
     }) 
     console.log("tempArr", tempFrontPageArr);
-    return setFrontPage(tempFrontPageArr);
+    setFrontPage(tempFrontPageArr);
   }
 
   // Will probably need to come back to this logic and make sure

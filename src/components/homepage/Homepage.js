@@ -4,8 +4,8 @@ import "./homepage.css";
 const Results = (props) => {
     console.log("props", props);
 
+    console.log("props.frontPage", props.frontPage);
     return(
-
         <section className="results-container row flex-column justify-content-center align-items-center" data-theme={props.theme}>
 
             {props.frontPage.map((item, i) => {

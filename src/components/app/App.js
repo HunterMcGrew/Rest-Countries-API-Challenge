@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import './App.css';
 import { useState } from 'react';
 import useLocalStorage from 'use-local-storage';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 // components
 import Header from "../header/Header";
 import Search from "../search/Search";
@@ -64,37 +65,65 @@ function App() {
   if (!savedApi) fetchAll();
   if (savedApi && !apiAll) setApiAll(savedApi);
   
-  console.log("apiAll", apiAll); 
-  console.log("savedApi", savedApi);
-  console.log("frontpage", frontPage);
+  // console.log("apiAll", apiAll); 
+  // console.log("savedApi", savedApi);
+  // console.log("frontpage", frontPage);
+
 
   return (
-    <section className="App" data-theme={theme}>
-        <Header
-          theme={theme}
-          switchTheme={switchTheme}
-        />
-      <section className="body-container" data-theme={theme}>
-        <Search
-          theme={theme}
-          setRegionFilter={setRegionFilter}
-        />
-        <Suspense fallback={<Loading />}>
-          <Homepage
-            theme={theme}
-            frontPage={frontPage}
-          />
-        </Suspense>
-        {/* <Suspense fallback={<Loading />}>
-          <Results
-            theme={theme}
-            savedApi={savedApi}
-            apiAll={apiAll}
-          />
-        </Suspense> */}
-      </section>
-    </section>
+    <div className="App" data-theme={theme}>
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={<>
+              <Header 
+                theme={theme}
+                switchTheme={switchTheme}
+              />
+              <Search 
+                theme={theme}
+                setRegionFilter={setRegionFilter}
+              />
+              <Suspense fallback={<Loading />}>
+                <Homepage
+                  theme={theme}
+                  frontPage={frontPage}
+                />
+              </Suspense>
+            </>}/>
+        </Routes>
+      </Router>
+    </div>
   );
 }
+
+// old shit, never know if you'll need it
+
+{/* <section className="App" data-theme={theme}>
+                <Header
+                  theme={theme}
+                  switchTheme={switchTheme}
+                />
+              <section className="body-container" data-theme={theme}>
+                <Search
+                  theme={theme}
+                  setRegionFilter={setRegionFilter}
+                />
+                <Suspense fallback={<Loading />}>
+                  <Homepage
+                    theme={theme}
+                    frontPage={frontPage}
+                  />
+                </Suspense> */}
+                {/* <Suspense fallback={<Loading />}>
+                  <Results
+                    theme={theme}
+                    savedApi={savedApi}
+                    apiAll={apiAll}
+                  />
+                </Suspense> */}
+              {/* </section>
+            </section> */}
 
 export default App;

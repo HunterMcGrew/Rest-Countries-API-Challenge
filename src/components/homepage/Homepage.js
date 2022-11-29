@@ -2,16 +2,16 @@ import React from "react";
 import "./homepage.css";
 
 const Results = (props) => {
-    console.log("props", props);
+    console.log("props on homepage", props);
 
-    console.log("props.frontPage", props.frontPage);
+    // console.log("props.frontPage", props.frontPage);
     return(
         <section className="results-container row flex-column justify-content-center align-items-center" data-theme={props.theme}>
 
             {props.frontPage.map((item, i) => {
 
                 return(
-                    <div className="flag col-12 " key={i} data-theme={props.theme}>
+                    <div className="flag col-12 shadow-sm" key={i} data-theme={props.theme}>
                     <img
                         src={item.flags.png}
                     />
@@ -27,7 +27,7 @@ const Results = (props) => {
                                 <span className="country-info-title">
                                     Population:{' '}
                                 </span>
-                                    {item.population}
+                                    {item.population.toLocaleString("en-US")}
                             </p>
                             <p className="country-region country-info">
                                 <span className="country-info-title">

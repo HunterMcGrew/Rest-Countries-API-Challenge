@@ -29,6 +29,7 @@ html {
     background-color: var(--darkBg);
 }
 
+/* Moved this to search-wrapper class in search.css */
 .body-container {
     /* background-color: var(--lightBg); */
     /* height: 100vh; */

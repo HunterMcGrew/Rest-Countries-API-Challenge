@@ -10,6 +10,10 @@
     --white: hsl(0, 0%, 100%);
 }
 
+.search-wrapper {
+    margin: 40px 20px 0 20px;
+}
+
 .search-container {
     margin-bottom: 40px;
 }

@@ -1,11 +1,28 @@
 
-
+import "./singlepage.css";
 
 
 const SinglePage = (props) => {
     console.log("props on SinglePage", props);
 
     // console.log("props.frontPage", props.frontPage);
+
+    let obj = Object.values(props.singlePage.languages);
+    let languagesObj = Object.values(props.singlePage.languages);
+    let languages = [];
+    languagesObj.forEach(item => languages.push(item));
+    console.log("langObj", languagesObj);
+    console.log("object thing", obj);
+    console.log("langArr", languages);
+
+    // country may not always have a border...
+    // maybe an if statement up here if it exists
+    // runs a function that will then return proper HTML?
+
+    // languages returns fine when called Object.values()
+    // but there is no ", " in between the languages...
+    // can't seem to turn it into an array without throwing object child error
+
     return(
         <section className="results-container row flex-column justify-content-center align-items-center" data-theme={props.theme}>
 
@@ -48,34 +65,51 @@ const SinglePage = (props) => {
                 <br/>
                 <br/>
 
-                <p className="country-sub-region country-info">
+                <p className="country-domain country-info">
                     <span className="country-info-title">
                         Top Level Domain:{" "}
                     </span>
                     {props.singlePage.tld[0]}
                 </p>
-                <p className="country-sub-region country-info">
+                <p className="country-currencies country-info">
                     <span className="country-info-title">
                         Currencies:{" "}
                     </span>
-                    {props.singlePage.currencies.SEK.name}
+                    {Object.values(props.singlePage.currencies)[0].name}
                 </p>
-                <p className="country-sub-region country-info">
+                <p className="country-languages country-info">
                     <span className="country-info-title">
                         Languages:{" "}
                     </span>
-                    {props.singlePage.languages.swe}
+                    {Object.values(props.singlePage.languages).map((item, i) => {
+                        console.log(item);
+                        return (
+                            <span className="country-sub-region country-info">
+                                {item}
+                            </span>
+                           )
+                        })}
                 </p>
 
                 <br/>
                 <br/>
 
-                <p className="country-sub-region country-info">
+                <div className="border-countries">
                     <span className="country-info-title">
-                        {/* Sub Region:{" "} */}
+                            Border Countires:{" "}
                     </span>
-                    {/* {props.singlePage.subregion} */}
-                </p>
+                    {props.singlePage.borders.map((item, i) => {
+                        console.log(item);
+                        return (
+                            <span className="country-sub-region country-info">
+                                {item}
+                            </span>
+
+                        )
+                    })}
+                    
+                    
+                </div>
             </div>
 
         </div>

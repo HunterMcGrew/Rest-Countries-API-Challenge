@@ -1,0 +1,56 @@
+:root {
+    /* dark mode */
+    --darkElements: hsl(209, 23%, 22%);
+    --darkBg: hsl(207, 26%, 17%);
+    /* light mode */
+    --lightText: hsl(200, 15%, 8%);
+    --lightInput: hsl(0, 0%, 52%);
+    --lightBg:  hsl(0, 0%, 98%);
+    /* dark mode text & light mode elements */
+    --white: hsl(0, 0%, 100%);
+}
+
+/* light mode */
+
+.flag {
+    margin: 0 0 40px 0;
+    padding: 0;
+    background-color: var(--white);
+    width: 320px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--lightText);
+}
+
+.country-info-container {
+    margin: 30px;
+}
+
+#country-name {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.country-info {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.country-info-title {
+    font-weight: 600;
+}
+
+/* dark mode */
+
+.flag[data-theme="dark"] {
+    background-color: var(--darkElements);
+    color: var(--white);
+}
+
+a[data-theme="dark"] {
+    text-decoration: none;
+    color: var(--white);
+}

@@ -5,9 +5,11 @@ import useLocalStorage from 'use-local-storage';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 // components
 import Header from "../header/Header";
-import Search from "../search/Search";
+// import Search from "../search/Search";
 import Loading from "../loading/Loading";
 const Homepage = lazy(() => import("../homepage/Homepage.js"));
+const Search = lazy(() => import("../search/Search"));
+const SinglePage = lazy(() => import("../singlePage/SingePage"));
 // const Results = lazy(() => import("../results/Results.js"));
 
 
@@ -19,6 +21,7 @@ function App() {
   const [apiAll, setApiAll] = useState();
   const [frontPage, setFrontPage] = useLocalStorage("frontPage", );
   const [regionFilter, setRegionFilter] = useState();
+  const [singlePage, setSinglePage] = useState();
 
   // how to keep state data thereeee
   
@@ -56,7 +59,7 @@ function App() {
         tempFrontPageArr.push(item);
       }
     }) 
-    console.log("tempArr", tempFrontPageArr);
+    // console.log("tempArr", tempFrontPageArr);
     setFrontPage(tempFrontPageArr);
   }
 
@@ -68,6 +71,12 @@ function App() {
   // console.log("apiAll", apiAll); 
   // console.log("savedApi", savedApi);
   // console.log("frontpage", frontPage);
+
+  const singleResult = (item, i) => {
+    console.log("item2", item, "i2", i);
+    setSinglePage(item);
+
+}
 
 
   return (
@@ -81,17 +90,43 @@ function App() {
                 theme={theme}
                 switchTheme={switchTheme}
               />
-              <Search 
-                theme={theme}
-                setRegionFilter={setRegionFilter}
-              />
+              <Suspense fallback={<Loading />}>
+                <Search 
+                  theme={theme}
+                  setRegionFilter={setRegionFilter}
+                />
+              </Suspense>
               <Suspense fallback={<Loading />}>
                 <Homepage
                   theme={theme}
                   frontPage={frontPage}
+                  singleResult={singleResult}
                 />
               </Suspense>
-            </>}/>
+            </>}
+          />
+          {/* 404 Route for the future */}
+          <Route
+            path="*"
+            element={<>
+              <Header
+                theme={theme}
+                switchTheme={switchTheme}
+              />
+              <Suspense fallback={<Loading />}>
+                <Search 
+                  theme={theme}
+                  setRegionFilter={setRegionFilter}
+                />
+              </Suspense>
+              <Suspense fallback={<Loading />}>
+                <SinglePage
+                  theme={theme}
+                  singlePage={singlePage}
+                />
+              </Suspense>
+            </>}
+          />
         </Routes>
       </Router>
     </div>

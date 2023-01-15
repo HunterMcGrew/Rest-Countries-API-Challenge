@@ -19,6 +19,11 @@
     width: 320px;
 }
 
+a {
+    text-decoration: none;
+    color: var(--lightText);
+}
+
 .country-info-container {
     margin: 30px;
 }
@@ -42,5 +47,10 @@
 
 .flag[data-theme="dark"] {
     background-color: var(--darkElements);
+    color: var(--white);
+}
+
+a[data-theme="dark"] {
+    text-decoration: none;
     color: var(--white);
 }

@@ -10,7 +10,7 @@ function Search(props) {
 
     useEffect(() => {
         dropDownEl = dropDown.current;
-    }, [1]);
+    }, []);
 
     const checkMenu = () => {
         if (dropDownEl.style.display === "block") {

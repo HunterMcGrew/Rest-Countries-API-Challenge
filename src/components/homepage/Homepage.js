@@ -1,5 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./homepage.css";
+
+
 
 const Results = (props) => {
     console.log("props on homepage", props);
@@ -9,6 +12,7 @@ const Results = (props) => {
         <section className="results-container row flex-column justify-content-center align-items-center" data-theme={props.theme}>
 
             {props.frontPage.map((item, i) => {
+                // console.log("item", item, "i", i);
 
                 return(
                     <div className="flag col-12 shadow-sm" key={i} data-theme={props.theme}>
@@ -18,9 +22,16 @@ const Results = (props) => {
                     {/* how do i get the SVG from data?
                         needs to be a fetch?
                     */}
-                        <div className="country-info-container">
+                    <Link
+                        data-theme={props.theme}
+                        to={item.name.common}
+                        onClick={(e) => props.singleResult(item, i)}
+                        >
+                        <div className="country-info-container" key={i}>
                             <p className="country-name country-info" id="country-name">
-                                {item.name.common}
+                                
+                                    {item.name.common}
+                                
                             </p>
                             <p className="country-population country-info">
                                 {/* need to format the population number to have commas */}
@@ -42,6 +53,7 @@ const Results = (props) => {
                                 {item.capital}
                             </p>
                         </div>
+                    </Link>
                     </div>
                 )
             })}

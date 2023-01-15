@@ -10,7 +10,10 @@ const SinglePage = (props) => {
     let obj = Object.values(props.singlePage.languages);
     let languagesObj = Object.values(props.singlePage.languages);
     let languages = [];
-    languagesObj.forEach(item => languages.push(item));
+    let borders;
+    // if borders doesn't exist, we won't populate anything
+    if (props.singlePage.borders) borders = props.singlePage.borders;
+    languagesObj.forEach(item => languages.push(item.toLocaleString()));
     console.log("langObj", languagesObj);
     console.log("object thing", obj);
     console.log("langArr", languages);
@@ -98,7 +101,7 @@ const SinglePage = (props) => {
                     <span className="country-info-title">
                             Border Countires:{" "}
                     </span>
-                    {props.singlePage.borders.map((item, i) => {
+                    {borders.map((item, i) => {
                         console.log(item);
                         return (
                             <span className="country-sub-region country-info">

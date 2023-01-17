@@ -1,17 +1,44 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Search.css";
 import 'material-symbols';
 
 function Search(props) {
+    console.log("search props", props);
+    // state to hold dropdown Element
+    const [dropDownEl, setDropDownEl] = useState();
+    
+    // grabs the element from ref
+    const dropDown = useRef();
+    // console.log("dropDown", dropDown);
 
-    const dropDown = useRef(null);
-    let dropDownEl;
-    console.log("dropDown", dropDown);
-
+    // throws the element in state for persistency 
     useEffect(() => {
-        dropDownEl = dropDown.current;
+        setDropDownEl(dropDown.current);
     }, []);
 
+    // might need to move this to app? or homepage??
+    const searchFilter = () => {
+    
+        console.log("filtering!");
+        console.log("props.savedApi", props.savedApi);
+        console.log("regionFilter", props.regionFilter);
+  
+        let tempArr = [];
+  
+        props.savedApi.forEach((country) => {
+            console.log("country", country);
+            console.log("regionFilter", props.regionFilter);
+          if (country.region == props.regionFilter) tempArr.push(country);
+        })
+  
+        console.log("tempArr in filter", tempArr);
+        props.setFiltered(tempArr);
+  
+      }
+
+    // console.log("dropDownEl", dropDownEl);
+
+    // handles opening and closing menu
     const checkMenu = () => {
         if (dropDownEl.style.display === "block") {
             dropDownEl.style.display = "none";
@@ -19,6 +46,17 @@ function Search(props) {
             dropDownEl.style.display = "block";
         }
     }
+
+    // function to grab the value of selected menu item
+    const handleSelection = (e) => {
+        console.log(e.target.textContent);
+        let selection = e.target.textContent;
+        props.setRegionFilter(selection);
+        checkMenu();
+        searchFilter();
+    }
+
+    
 
     return(
 
@@ -48,7 +86,9 @@ function Search(props) {
                         <input type="text" className="form-control" placeholder="Search for a country..." aria-label="Search for a country..." aria-describedby="basic-addon1" data-theme={props.theme}></input>
                     </div>
 
-                    {/* desktop filter-container */}
+                    {/* desktop filter-container 
+                    do I even need this? seems like the mobile is doing all the work
+                    */}
                     <section className="filter-container-desktop col-2 d-flex justify-content-end" data-theme={props.theme}>
                         <div className="d-flex align-items-center justify-content-between">
                             <span className="filter-text" data-theme={props.theme}>
@@ -85,27 +125,32 @@ function Search(props) {
                     <ul className="region-ul">
                         <li className="region-selector" 
                             value="Africa"
-                            data-theme={props.theme}>
+                            data-theme={props.theme}
+                            onClick={((e) => handleSelection(e))}>
                                 Africa
                         </li>
                         <li className="region-selector" 
                             value="America"
-                            data-theme={props.theme}>
-                                America
+                            data-theme={props.theme}
+                            onClick={((e) => handleSelection(e))}>
+                                Americas
                         </li>
                         <li className="region-selector" 
                             value="Asia"
-                            data-theme={props.theme}>
+                            data-theme={props.theme}
+                            onClick={((e) => handleSelection(e))}>
                                 Asia
                         </li>
                         <li className="region-selector" 
                             value="Europe"
-                            data-theme={props.theme}>
+                            data-theme={props.theme}
+                            onClick={((e) => handleSelection(e))}>
                                 Europe
                         </li>
                         <li className="region-selector" 
                             value="Oceania"
-                            data-theme={props.theme}>
+                            data-theme={props.theme}
+                            onClick={((e) => handleSelection(e))}>
                                 Oceania
                         </li>
                     </ul>

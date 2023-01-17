@@ -3,20 +3,18 @@ import "./singlepage.css";
 
 
 const SinglePage = (props) => {
-    console.log("props on SinglePage", props);
+    // console.log("props on SinglePage", props);
 
     // console.log("props.frontPage", props.frontPage);
 
-    let obj = Object.values(props.singlePage.languages);
     let languagesObj = Object.values(props.singlePage.languages);
-    let languages = [];
+    // let languages = [];
     let borders;
     // if borders doesn't exist, we won't populate anything
     if (props.singlePage.borders) borders = props.singlePage.borders;
-    languagesObj.forEach(item => languages.push(item.toLocaleString()));
-    console.log("langObj", languagesObj);
-    console.log("object thing", obj);
-    console.log("langArr", languages);
+    // toLocaleString() to avoid child cannot be obj error
+    // languagesObj.map(item => languages.push(item.toLocaleString()));
+
 
     // country may not always have a border...
     // maybe an if statement up here if it exists
@@ -24,10 +22,42 @@ const SinglePage = (props) => {
 
     // languages returns fine when called Object.values()
     // but there is no ", " in between the languages...
-    // can't seem to turn it into an array without throwing object child error
+    // commas aren't the hard part, the spaces are
+
+    // function to populate if there is a border or not
+    const borderDisplay = () =>  {
+        // will need a way to go over certain level of the api obj
+        // and match their abbr with the real obj to get data
+        if (!borders) {
+            return;
+        } else {
+            return(
+
+                <div className="border-countries">
+                    <span className="country-info-title">
+                            Border Countires:{" "}
+                    </span>
+                    {borders.map((item, i) => {
+                        console.log(item);
+                        return (
+                            <span className="country-sub-region country-info">
+                                {item}
+                            </span>
+
+                        )
+                    })}
+                    
+                    
+                </div>
+
+            )
+        }
+    }
 
     return(
-        <section className="results-container row flex-column justify-content-center align-items-center" data-theme={props.theme}>
+        <section className="results-container row flex-column justify-content-center align-items-center" 
+        data-theme={props.theme}
+        key={props.singlePage.name.common}>
 
         <div className="flag col-12 shadow-sm" data-theme={props.theme}>
         <img
@@ -84,11 +114,11 @@ const SinglePage = (props) => {
                     <span className="country-info-title">
                         Languages:{" "}
                     </span>
-                    {Object.values(props.singlePage.languages).map((item, i) => {
-                        console.log(item);
+                    {Object.values(props.singlePage.languages).map((lang) => {
+                        console.log(lang);
                         return (
-                            <span className="country-sub-region country-info">
-                                {item}
+                            <span className="country-sub-region country-info" key={lang}>
+                                {lang}
                             </span>
                            )
                         })}
@@ -97,7 +127,9 @@ const SinglePage = (props) => {
                 <br/>
                 <br/>
 
-                <div className="border-countries">
+                {/* calling this function to see what needs to be returned */}
+                {borderDisplay()}
+                {/* <div className="border-countries">
                     <span className="country-info-title">
                             Border Countires:{" "}
                     </span>
@@ -112,7 +144,7 @@ const SinglePage = (props) => {
                     })}
                     
                     
-                </div>
+                </div> */}
             </div>
 
         </div>

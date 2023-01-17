@@ -6,8 +6,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import axios from 'axios';
 // components
 import Header from "../header/Header";
-// import Search from "../search/Search";
-// import Homepage from "../homepage/Homepage";
 import Loading from "../loading/Loading";
 const Homepage = lazy(() => import("../homepage/Homepage.js"));
 const Search = lazy(() => import("../search/Search"));
@@ -51,40 +49,13 @@ function App() {
 
     getData();
   
-    
-    // axios.get("https://restcountries.com/v3.1/all")
-    //   .then((res) => setApiAll(res.data))
-    //   .then(() => test());
-    //   console.log("is this effect running?");
-    //   console.log("apiAll", apiAll);
-      
-
-    //filter through all countries to grab a few for the home page
-    // let tempFrontPageArr = [];
-    // console.log("apiAll before map", apiAll);
-    // apiAll.map((item) => {
-    //   if (item.name.common === "Germany" || 
-    //       item.name.common === "United States of America" ||
-    //       item.name.common === "Brazil" ||
-    //       item.name.common === "Sweden" ||
-    //       item.name.common === "Ireland" ||
-    //       item.name.common === "Japan" ||
-    //       item.name.common === "China" ||
-    //       item.name.common === "Australia"
-    //       ) {
-    //     tempFrontPageArr.push(item);
-    //   }
-    // }) 
-    // console.log("tempArr", tempFrontPageArr);
-    // setFrontPage(tempFrontPageArr);
-    // localStorage.setItem("frontpage", JSON.stringify(tempFrontPageArr));
 
   }, []);
 
   useEffect(() => {
 
     let tempFrontPageArr = [];
-    console.log("apiAll before map", apiAll);
+    // console.log("apiAll before map", apiAll);
     apiAll.map((item) => {
       if (item.name.common === "Germany" || 
           item.name.common === "United States of America" ||
@@ -98,7 +69,7 @@ function App() {
         tempFrontPageArr.push(item);
       }
     }) 
-    console.log("tempArr", tempFrontPageArr);
+    // console.log("tempArr", tempFrontPageArr);
     setFrontPage(tempFrontPageArr);
     localStorage.setItem("frontpage", JSON.stringify(tempFrontPageArr));
 

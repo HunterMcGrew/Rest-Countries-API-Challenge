@@ -5,7 +5,7 @@ import "./homepage.css";
 
 
 const Homepage = (props) => {
-    console.log("props on homepage", props);
+    // console.log("props on homepage", props);
 
 
     // if (props.regionFilter);

@@ -4,7 +4,7 @@ import "./Search.css";
 import 'material-symbols';
 
 function Search(props) {
-    console.log("search props", props);
+    // console.log("search props", props);
     // state to hold dropdown Element
     const [dropDownEl, setDropDownEl] = useState();
     
@@ -29,7 +29,7 @@ function Search(props) {
 
     // function to grab the value of selected menu item
     const handleSelection = (e) => {
-        console.log(e.target.textContent);
+        // console.log(e.target.textContent);
         let selection = e.target.textContent;
         props.setRegionFilter(selection);
         checkMenu();

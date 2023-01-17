@@ -79,7 +79,7 @@ function App() {
 
   // function to grab a single country obj from the api data
   const singleResult = (item, i) => {
-    console.log("item2", item, "i2", i);
+    // console.log("item2", item, "i2", i);
     setSinglePage(item);
 } 
 

@@ -1,6 +1,7 @@
 {
   "name": "rest-countries-api",
   "version": "0.1.0",
+  "homepage": "https://huntermcgrew.github.io/Rest-Countries-API-Challenge/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",

@@ -1,5 +1,6 @@
 import React from "react";
 import "./Header.css";
+import { Link } from "react-router-dom";
 
 function Header(props) {
 
@@ -13,9 +14,11 @@ function Header(props) {
 
         <header className="row shadow-sm header-container" data-theme={props.theme}>
             <section className="header col-7 d-flex align-items-center" data-theme={props.theme}>
+                <Link data-theme={props.theme} to="/">
                 <p className="header-text" data-theme={props.theme}>
                     Where in the world?
                 </p>
+                </Link>
             </section>
             <section className="theme-switcher col-5 d-flex justify-content-end" data-theme={props.theme}>
                 <div className="theme-switcher-text-container d-flex align-items-center">

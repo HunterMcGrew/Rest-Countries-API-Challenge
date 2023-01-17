@@ -40,7 +40,7 @@ const SinglePage = (props) => {
                     {borders.map((item, i) => {
                         console.log(item);
                         return (
-                            <span className="country-sub-region country-info">
+                            <span className="country-sub-region country-info" key={item}>
                                 {item}
                             </span>
 

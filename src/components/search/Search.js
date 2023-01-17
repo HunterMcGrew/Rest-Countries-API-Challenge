@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import "./Search.css";
 import 'material-symbols';
 
@@ -16,27 +17,6 @@ function Search(props) {
         setDropDownEl(dropDown.current);
     }, []);
 
-    // might need to move this to app? or homepage??
-    const searchFilter = () => {
-    
-        console.log("filtering!");
-        console.log("props.savedApi", props.savedApi);
-        console.log("regionFilter", props.regionFilter);
-  
-        let tempArr = [];
-  
-        props.savedApi.forEach((country) => {
-            console.log("country", country);
-            console.log("regionFilter", props.regionFilter);
-          if (country.region == props.regionFilter) tempArr.push(country);
-        })
-  
-        console.log("tempArr in filter", tempArr);
-        props.setFiltered(tempArr);
-  
-      }
-
-    // console.log("dropDownEl", dropDownEl);
 
     // handles opening and closing menu
     const checkMenu = () => {
@@ -53,11 +33,9 @@ function Search(props) {
         let selection = e.target.textContent;
         props.setRegionFilter(selection);
         checkMenu();
-        searchFilter();
+        // searchFilter();
     }
-
     
-
     return(
 
         <div className="search-wrapper">
@@ -123,36 +101,47 @@ function Search(props) {
                 </div>
                 <div className="region-container rounded-2 shadow-sm" data-theme={props.theme} ref={dropDown}>
                     <ul className="region-ul">
-                        <li className="region-selector" 
-                            value="Africa"
-                            data-theme={props.theme}
-                            onClick={((e) => handleSelection(e))}>
-                                Africa
-                        </li>
-                        <li className="region-selector" 
-                            value="America"
-                            data-theme={props.theme}
-                            onClick={((e) => handleSelection(e))}>
-                                Americas
-                        </li>
-                        <li className="region-selector" 
-                            value="Asia"
-                            data-theme={props.theme}
-                            onClick={((e) => handleSelection(e))}>
-                                Asia
-                        </li>
-                        <li className="region-selector" 
-                            value="Europe"
-                            data-theme={props.theme}
-                            onClick={((e) => handleSelection(e))}>
-                                Europe
-                        </li>
-                        <li className="region-selector" 
-                            value="Oceania"
-                            data-theme={props.theme}
-                            onClick={((e) => handleSelection(e))}>
-                                Oceania
-                        </li>
+                        
+                        <Link to="/Africa" data-theme={props.theme}>
+                            <li className="region-selector" 
+                                value="Africa"
+                                data-theme={props.theme}
+                                onClick={((e) => handleSelection(e))}>
+                                    Africa
+                            </li>
+                        </Link>
+                        <Link to="/Americas" data-theme={props.theme}>
+                            <li className="region-selector" 
+                                value="Americas"
+                                data-theme={props.theme}
+                                onClick={((e) => handleSelection(e))}>
+                                    Americas
+                            </li>
+                        </Link>
+                        <Link to="/Asia" data-theme={props.theme}>
+                            <li className="region-selector" 
+                                value="Asia"
+                                data-theme={props.theme}
+                                onClick={((e) => handleSelection(e))}>
+                                    Asia
+                            </li>
+                        </Link>
+                        <Link to="/Europe" data-theme={props.theme}>
+                            <li className="region-selector" 
+                                value="Europe"
+                                data-theme={props.theme}
+                                onClick={((e) => handleSelection(e))}>
+                                    Europe
+                            </li>
+                        </Link>
+                        <Link to="/Oceania" data-theme={props.theme}>
+                            <li className="region-selector" 
+                                value="Oceania"
+                                data-theme={props.theme}
+                                onClick={((e) => handleSelection(e))}>
+                                    Oceania
+                            </li>
+                        </Link>
                     </ul>
                 </div>
             </section>

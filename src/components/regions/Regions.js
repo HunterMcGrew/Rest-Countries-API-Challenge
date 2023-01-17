@@ -5,7 +5,7 @@ import "./regions.css";
 
 
 const Regions = (props) => {
-    console.log("props on regions", props);
+    // console.log("props on regions", props);
 
 
     // if (props.regionFilter);

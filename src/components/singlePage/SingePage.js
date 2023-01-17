@@ -38,7 +38,7 @@ const SinglePage = (props) => {
                             Border Countires:{" "}
                     </span>
                     {borders.map((item, i) => {
-                        console.log(item);
+                        // console.log(item);
                         return (
                             <span className="country-sub-region country-info" key={item}>
                                 {item}
@@ -115,7 +115,7 @@ const SinglePage = (props) => {
                         Languages:{" "}
                     </span>
                     {Object.values(props.singlePage.languages).map((lang) => {
-                        console.log(lang);
+                        // console.log(lang);
                         return (
                             <span className="country-sub-region country-info" key={lang}>
                                 {lang}

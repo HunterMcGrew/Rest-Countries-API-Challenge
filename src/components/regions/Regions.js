@@ -7,11 +7,6 @@ import "./regions.css";
 const Regions = (props) => {
     // console.log("props on regions", props);
 
-
-    // if (props.regionFilter);
-    // have the main state in an always throughout the app var
-    // change the main state depending on what data???
-
         return(
 
             <section className="results-container row flex-column justify-content-center align-items-center" data-theme={props.theme}>

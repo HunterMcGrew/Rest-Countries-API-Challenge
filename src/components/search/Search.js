@@ -4,9 +4,11 @@ import "./Search.css";
 import 'material-symbols';
 
 function Search(props) {
-    // console.log("search props", props);
+    console.log("search props", props);
     // state to hold dropdown Element
     const [dropDownEl, setDropDownEl] = useState();
+    const [inputTextEl, setInputTextEl] = useState("");
+    console.log("inputTextEl", inputTextEl);
     
     // grabs the element from ref
     const dropDown = useRef();
@@ -35,6 +37,21 @@ function Search(props) {
         checkMenu();
         // searchFilter();
     }
+
+    const handleSubmit = (e, value) => {
+        // console.log("e", e);
+        // console.log("e value", value);
+        // console.log("inputTextEl", inputTextEl);
+        setInputTextEl(value);
+
+        if (e.code === "Enter") {
+            console.log("enter was pressed", inputTextEl);
+            // grab value
+            // searchFunc
+            props.searchFunc(value);
+            
+        }
+    }
     
     return(
 
@@ -61,7 +78,17 @@ function Search(props) {
                             <line x1="21" y1="21" x2="15" y2="15"></line>
                             </svg>
                         </span>
-                        <input type="text" className="form-control" placeholder="Search for a country..." aria-label="Search for a country..." aria-describedby="basic-addon1" data-theme={props.theme}></input>
+                        {/* Search Input Bar */}
+                        <input type="text" 
+                            className="form-control" 
+                            placeholder="Search for a country..." 
+                            aria-label="Search for a country..." 
+                            aria-describedby="basic-addon1" 
+                            data-theme={props.theme}
+                            // ref={inputTextEl}
+                            onKeyUp={(e) => handleSubmit(e, e.target.value)}
+                            >
+                        </input>
                     </div>
 
                     {/* desktop filter-container 

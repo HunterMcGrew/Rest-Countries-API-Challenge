@@ -27,6 +27,8 @@ function App() {
   const [regionFilter, setRegionFilter] = useState("");
   const [singlePage, setSinglePage] = useState();
   const [filtered, setFiltered] = useState();
+
+  console.log("apiAll", apiAll);
   
   const switchTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
@@ -38,7 +40,7 @@ function App() {
     const getData = async () => {
       try {
         const response = await axios.get("https://restcountries.com/v3.1/all");
-        console.log("response", response);
+        // console.log("response", response);
         let data = response.data;
         setApiAll(data);
 
@@ -58,7 +60,7 @@ function App() {
     // console.log("apiAll before map", apiAll);
     apiAll.map((item) => {
       if (item.name.common === "Germany" || 
-          item.name.common === "United States of America" ||
+          item.name.common === "United States" ||
           item.name.common === "Brazil" ||
           item.name.common === "Sweden" ||
           item.name.common === "Ireland" ||
@@ -75,27 +77,7 @@ function App() {
 
   }, [apiAll]);
 
-  // const test = () => {
-  //   console.log("is test running?");
-  //   console.log("apiAll in test", apiAll);
-  //   let tempFrontPageArr = [];
-  //   apiAll.map((item) => {
-  //     if (item.name.common === "Germany" || 
-  //         item.name.common === "United States of America" ||
-  //         item.name.common === "Brazil" ||
-  //         item.name.common === "Sweden" ||
-  //         item.name.common === "Ireland" ||
-  //         item.name.common === "Japan" ||
-  //         item.name.common === "China" ||
-  //         item.name.common === "Australia"
-  //         ) {
-  //       tempFrontPageArr.push(item);
-  //     }
-  //   })
-  //   setFrontPage(tempFrontPageArr);
-  //   localStorage.setItem("frontpage", JSON.stringify(tempFrontPageArr));
-  // }
-
+  
   // when regionFilter state is changed, filter apiAll for that region
   useEffect(() => {
     if(!regionFilter) {
@@ -116,7 +98,28 @@ function App() {
   const singleResult = (item, i) => {
     // console.log("item2", item, "i2", i);
     setSinglePage(item);
-} 
+}
+
+const searchFunc = (string) => {
+  console.log("is searchFunc running");
+
+  // if (!regionFilter) {
+    let foundCountry;
+    apiAll.map((country) => {
+      console.log("string in searchFunc", string);
+      console.log("country in searchFunc", country);
+      let searched = string.toLowerCase();
+      let countryName = country.name.common.toLowerCase();
+
+        if (searched == countryName) {
+         foundCountry = country;
+
+        }
+      })
+      // confirms finding country
+      console.log("foundCountry", foundCountry);
+
+}
 
 
   return (
@@ -136,6 +139,7 @@ function App() {
                   setRegionFilter={setRegionFilter}
                   setFiltered={setFiltered}
                   regionFilter={regionFilter}
+                  searchFunc={searchFunc}
                 />
               </Suspense>
               <Suspense fallback={<Loading />}>
@@ -161,6 +165,7 @@ function App() {
                   setRegionFilter={setRegionFilter}
                   setFiltered={setFiltered}
                   regionFilter={regionFilter}
+                  searchFunc={searchFunc}
                 />
               </Suspense>
               <Suspense fallback={<Loading />}>
@@ -186,6 +191,7 @@ function App() {
                   setRegionFilter={setRegionFilter}
                   setFiltered={setFiltered}
                   regionFilter={regionFilter}
+                  searchFunc={searchFunc}
                 />
               </Suspense>
               <Suspense fallback={<Loading />}>
@@ -211,6 +217,7 @@ function App() {
                   setRegionFilter={setRegionFilter}
                   setFiltered={setFiltered}
                   regionFilter={regionFilter}
+                  searchFunc={searchFunc}
                 />
               </Suspense>
               <Suspense fallback={<Loading />}>
@@ -236,6 +243,7 @@ function App() {
                   setRegionFilter={setRegionFilter}
                   setFiltered={setFiltered}
                   regionFilter={regionFilter}
+                  searchFunc={searchFunc}
                 />
               </Suspense>
               <Suspense fallback={<Loading />}>
@@ -261,6 +269,7 @@ function App() {
                   setRegionFilter={setRegionFilter}
                   setFiltered={setFiltered}
                   regionFilter={regionFilter}
+                  searchFunc={searchFunc}
                 />
               </Suspense>
               <Suspense fallback={<Loading />}>
@@ -287,6 +296,7 @@ function App() {
                   setRegionFilter={setRegionFilter}
                   regionFilter={regionFilter}
                   setFiltered={setFiltered}
+                  searchFunc={searchFunc}
 
                 />
               </Suspense>
